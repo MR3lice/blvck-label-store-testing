@@ -1,0 +1,286 @@
+/* =============================================================
+   BLVCK LABEL — style.css
+   Static streetwear demo · mobile-first · single stylesheet
+   -------------------------------------------------------------
+   MODULE 1 — FOUNDATION
+   All design tokens live in :root. Never hardcode a hex or a
+   font-family in a component — always reference a variable.
+   Reason: portability (these :root values map straight into a
+   future Shopify/Dawn theme's settings).
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   1. TOKENS  (:root — single source of truth)
+   ------------------------------------------------------------- */
+:root {
+  /* Color roles */
+  --bg:          #0A0A0A;   /* page background — near-black, NEVER pure #000 */
+  --surface:     #141414;   /* cards / panels / drawer */
+  --text:        #F5F5F0;   /* primary text — off-white, NEVER pure #FFF */
+  --secondary:   #888888;   /* secondary / muted text */
+  --accent:      #00FF94;   /* THE ONE neon — used on ~5–10% of screen only */
+  --accent-ink:  #0A0A0A;   /* text placed on top of accent fills */
+  --muted:       #333333;   /* calm borders / secondary button outlines */
+  --placeholder: #1E1E1E;   /* image placeholder blocks */
+
+  /* Typography */
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;      /* headlines — uppercase, oversized */
+  --font-body:    "Helvetica Neue", Helvetica, Arial, sans-serif; /* body / UI */
+
+  /* Type scale (fluid) */
+  --fs-mega:  clamp(56px, 16vw, 160px); /* hero headline — bleeds off edge */
+  --fs-h1:    clamp(40px, 8vw, 88px);
+  --fs-h2:    clamp(30px, 5vw, 56px);
+  --fs-h3:    clamp(22px, 3vw, 32px);
+  --fs-body:  16px;
+  --fs-small: 13px;
+  --fs-label: 11px;                     /* eyebrows / nav / tags */
+
+  /* Layout */
+  --wrap:   1200px;                     /* max content width */
+  --gutter: clamp(16px, 5vw, 48px);     /* page side padding */
+
+  /* Motion — fast & snappy, ease-out (no slow luxury fades) */
+  --t-fast: 150ms;
+  --t:      200ms;
+  --t-slow: 250ms;
+  --ease:   cubic-bezier(0.2, 0, 0, 1); /* snappy ease-out */
+
+  /* Shape */
+  --radius: 0;                          /* SHARP corners everywhere */
+  --shadow-hard: 4px 4px 0 var(--accent); /* hard offset solid — sparing */
+  --border-hair: 1px solid var(--muted);
+}
+
+/* -------------------------------------------------------------
+   2. FONT IMPORT NOTE
+   Bebas Neue is loaded via <link> in each page's <head>.
+   Helvetica Neue is a system stack — no import needed.
+   ------------------------------------------------------------- */
+
+/* -------------------------------------------------------------
+   3. RESET
+   ------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+html, body { height: 100%; }
+
+img,
+picture,
+svg { display: block; max-width: 100%; }
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+button { cursor: pointer; }
+
+ul, ol { list-style: none; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------------
+   4. BASE ELEMENTS
+   ------------------------------------------------------------- */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;               /* headlines may bleed off-edge */
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;                 /* Bebas is single-weight */
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+
+p { color: var(--text); }
+
+strong { font-weight: 700; }
+
+/* -------------------------------------------------------------
+   5. REUSABLE PRIMITIVES
+   ------------------------------------------------------------- */
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Small uppercase label / eyebrow */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.eyebrow--accent { color: var(--accent); }
+
+/* Buttons — sharp corners, uppercase, snappy */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;                 /* tap target */
+  padding: 12px 28px;
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius);
+  transition: background var(--t) var(--ease),
+              color var(--t) var(--ease),
+              transform var(--t-fast) var(--ease);
+}
+.btn:active { transform: translateY(1px); }
+
+/* Primary — the green CTA */
+.btn--primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn--primary:hover { background: var(--text); }
+
+/* Secondary — outlined, calm */
+.btn--secondary {
+  background: transparent;
+  color: var(--text);
+  border: var(--border-hair);
+}
+.btn--secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Image placeholder block (real <img> swaps in later) */
+.ph {
+  display: grid;
+  place-items: center;
+  background: var(--placeholder);
+  color: var(--secondary);
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  text-align: center;
+  aspect-ratio: 4 / 5;              /* default product ratio; overridable */
+}
+
+/* -------------------------------------------------------------
+   6. ACCESSIBILITY — focus + reduced motion
+   ------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =============================================================
+   MODULE 1 SCAFFOLD — foundation preview only.
+   The block below styles the temporary token/type showcase on
+   index.html. It is removed when Module 2+ builds the real home.
+   ============================================================= */
+.fnd {
+  padding-block: clamp(48px, 10vw, 96px);
+}
+.fnd__title {
+  font-size: var(--fs-mega);
+  line-height: 0.85;
+  margin-bottom: 8px;
+}
+.fnd__sub {
+  color: var(--secondary);
+  max-width: 46ch;
+  margin-bottom: 56px;
+}
+.fnd__section-label {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  padding-top: 40px;
+  margin-bottom: 20px;
+  border-top: var(--border-hair);
+}
+.fnd__swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2px;
+}
+.fnd__swatch {
+  background: var(--surface);
+  border: var(--border-hair);
+  padding: 16px;
+}
+.fnd__chip {
+  height: 64px;
+  margin-bottom: 12px;
+  border: var(--border-hair);
+}
+.fnd__swatch b {
+  display: block;
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.fnd__swatch span {
+  color: var(--secondary);
+  font-size: var(--fs-small);
+}
+.fnd__type > * { margin-bottom: 14px; }
+.fnd__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
