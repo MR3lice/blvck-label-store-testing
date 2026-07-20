@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BLVCK LABEL — Foundation</title>
+  <title>BLVCK LABEL — Move First.</title>
+  <meta name="description" content="BLVCK LABEL — own-brand streetwear. Built in Bahrain. Worn everywhere." />
 
   <!-- Display font: Bebas Neue. Body font: Helvetica Neue system stack. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,80 +15,102 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- =========================================================
-       MODULE 1 — FOUNDATION PREVIEW
-       Temporary scaffold proving tokens, fonts and reset.
-       Module 2+ replaces this with the real home page.
+       TICKER — signature scrolling marquee (every page)
+       Two identical groups; CSS translates the track -50%.
        ========================================================= -->
-  <main class="wrap fnd">
-
-    <p class="eyebrow eyebrow--accent">BLVCK LABEL — FOUNDATION</p>
-    <h1 class="fnd__title">MOVE<br>FIRST.</h1>
-    <p class="fnd__sub">
-      Module 1 groundwork. Design tokens, type scale and base reset are wired.
-      Everything below reads from CSS variables in <strong>:root</strong> — the single
-      source of truth for the whole site.
-    </p>
-
-    <!-- COLOR TOKENS -->
-    <p class="fnd__section-label">Color tokens</p>
-    <div class="fnd__swatches">
-      <div class="fnd__swatch">
-        <div class="fnd__chip" style="background: var(--bg);"></div>
-        <b>Background</b><span>--bg · #0A0A0A</span>
+  <div class="ticker" role="presentation">
+    <div class="ticker__track" aria-hidden="true">
+      <div class="ticker__group">
+        <span class="ticker__item">Worldwide Shipping</span>
+        <span class="ticker__item">Limited Run</span>
+        <span class="ticker__item">Drop / 01 Live</span>
+        <span class="ticker__item">Move First</span>
+        <span class="ticker__item">When It's Gone It's Gone</span>
       </div>
-      <div class="fnd__swatch">
-        <div class="fnd__chip" style="background: var(--surface);"></div>
-        <b>Surface</b><span>--surface · #141414</span>
-      </div>
-      <div class="fnd__swatch">
-        <div class="fnd__chip" style="background: var(--text);"></div>
-        <b>Text</b><span>--text · #F5F5F0</span>
-      </div>
-      <div class="fnd__swatch">
-        <div class="fnd__chip" style="background: var(--secondary);"></div>
-        <b>Secondary</b><span>--secondary · #888888</span>
-      </div>
-      <div class="fnd__swatch">
-        <div class="fnd__chip" style="background: var(--accent);"></div>
-        <b>Accent</b><span>--accent · #00FF94</span>
-      </div>
-      <div class="fnd__swatch">
-        <div class="fnd__chip" style="background: var(--muted);"></div>
-        <b>Muted</b><span>--muted · #333333</span>
-      </div>
-      <div class="fnd__swatch">
-        <div class="fnd__chip" style="background: var(--placeholder);"></div>
-        <b>Placeholder</b><span>--placeholder · #1E1E1E</span>
+      <div class="ticker__group">
+        <span class="ticker__item">Worldwide Shipping</span>
+        <span class="ticker__item">Limited Run</span>
+        <span class="ticker__item">Drop / 01 Live</span>
+        <span class="ticker__item">Move First</span>
+        <span class="ticker__item">When It's Gone It's Gone</span>
       </div>
     </div>
+    <span class="sr-only">Worldwide shipping. Limited run. Drop 01 live. Move first.</span>
+  </div>
 
-    <!-- TYPE SCALE -->
-    <p class="fnd__section-label">Type scale — Bebas Neue display</p>
-    <div class="fnd__type">
-      <h1>Drop / 01</h1>
-      <h2>Shop All</h2>
-      <h3>Static Hoodie</h3>
-      <p style="max-width: 54ch;">
-        Body copy is set in the Helvetica Neue stack. Deadstock cuts for the ones who
-        move first. Built in Bahrain. Worn everywhere. When it's gone, it's gone.
-      </p>
-      <p class="eyebrow" style="color: var(--secondary);">Eyebrow / label · 0.18em tracking</p>
+  <!-- =========================================================
+       HEADER — sticky. Logo · nav · cart
+       ========================================================= -->
+  <header class="header">
+    <div class="wrap header__inner">
+      <a class="header__logo" href="index.html" aria-label="BLVCK LABEL home">BLVCK LABEL</a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="shop.html">Shop All</a>
+        <a class="nav__link" href="index.html#new-drop" aria-current="page">New Drop</a>
+        <a class="nav__link" href="index.html#archive">Archive</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="icon-btn cart-btn" href="#" aria-label="Cart, 0 items">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M4 7h16l-1.2 12.2a1 1 0 0 1-1 .8H6.2a1 1 0 0 1-1-.8L4 7Z" />
+            <path d="M8.5 7V6a3.5 3.5 0 0 1 7 0v1" />
+          </svg>
+          <span class="cart-badge" data-cart-count>0</span>
+        </a>
+        <button class="icon-btn hamburger" type="button"
+                data-nav-open aria-expanded="false" aria-controls="nav-overlay" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <!-- BUTTONS -->
-    <p class="fnd__section-label">Buttons — sharp corners, snappy</p>
-    <div class="fnd__row">
-      <a href="#" class="btn btn--primary">Shop The Drop</a>
-      <a href="#" class="btn btn--secondary">View Archive</a>
+  <!-- =========================================================
+       MOBILE NAV OVERLAY — full-screen, huge Bebas links
+       ========================================================= -->
+  <nav class="nav-overlay" id="nav-overlay" data-nav-overlay aria-label="Mobile">
+    <div class="nav-overlay__top">
+      <span class="nav-overlay__brand">BLVCK LABEL</span>
+      <button class="icon-btn" type="button" data-nav-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
     </div>
-
-    <!-- PLACEHOLDER BLOCK -->
-    <p class="fnd__section-label">Image placeholder (4:5 — real photo swaps in later)</p>
-    <div class="fnd__row">
-      <div class="ph" style="width: 220px;">STATIC HOODIE</div>
+    <ul class="nav-overlay__list">
+      <li><a class="nav-overlay__link" href="shop.html">Shop All</a></li>
+      <li><a class="nav-overlay__link" href="index.html#new-drop" aria-current="page">New Drop</a></li>
+      <li><a class="nav-overlay__link" href="index.html#archive">Archive</a></li>
+    </ul>
+    <div class="nav-overlay__secondary">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
+  </nav>
 
+  <!-- =========================================================
+       MODULE 2 SCAFFOLD — temporary spacer below the chrome.
+       Module 3 replaces this with the hero.
+       ========================================================= -->
+  <main id="main">
+    <section class="wrap chrome-note">
+      <div class="chrome-note__inner">
+        <p class="eyebrow eyebrow--accent">Module 2 — Site chrome</p>
+        <h1>Ticker. Header. Nav.</h1>
+        <p>
+          Scroll down — the header stays pinned while the green ticker scrolls above it.
+          On a narrow screen the nav collapses to the menu button; tap it for the
+          full-screen overlay. Hero lands next.
+        </p>
+      </div>
+    </section>
   </main>
 
   <script src="js/main.js"></script>
