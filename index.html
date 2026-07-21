@@ -95,22 +95,27 @@
     </div>
   </nav>
 
-  <!-- =========================================================
-       MODULE 2 SCAFFOLD — temporary spacer below the chrome.
-       Module 3 replaces this with the hero.
-       ========================================================= -->
   <main id="main">
-    <section class="wrap chrome-note">
-      <div class="chrome-note__inner">
-        <p class="eyebrow eyebrow--accent">Module 2 — Site chrome</p>
-        <h1>Ticker. Header. Nav.</h1>
-        <p>
-          Scroll down — the header stays pinned while the green ticker scrolls above it.
-          On a narrow screen the nav collapses to the menu button; tap it for the
-          full-screen overlay. Hero lands next.
-        </p>
+
+    <!-- =========================================================
+         HERO — full-viewport. DROP / 01 bleeds off the right edge.
+         Media is a placeholder block; drop a real <img> inside
+         .hero__media (uncomment) to swap in the photo later.
+         ========================================================= -->
+    <section class="hero">
+      <div class="hero__media">
+        <!-- <img src="assets/img/hero-drop-01.jpg" alt="Three figures in dark techwear on a wet Bahrain street at night" /> -->
+        <span class="hero__media-label">Hero — Urban / Rainy Street</span>
+      </div>
+
+      <div class="wrap hero__content">
+        <p class="eyebrow eyebrow--accent hero__eyebrow">BLVCK LABEL — BAHRAIN</p>
+        <h1 class="hero__title">DROP / 01</h1>
+        <p class="hero__sub">Deadstock cuts for the ones who move first.</p>
+        <a class="btn btn--primary hero__cta" href="shop.html">Shop The Drop</a>
       </div>
     </section>
+
   </main>
 
   <script src="js/main.js"></script>
