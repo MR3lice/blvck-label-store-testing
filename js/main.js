@@ -52,4 +52,17 @@
   var onChange = function (e) { if (e.matches) setNav(false); };
   if (mq.addEventListener) mq.addEventListener("change", onChange);
   else if (mq.addListener) mq.addListener(onChange);
+
+  /* ---- Newsletter capture (demo — no backend) ------------ */
+  var newsForm = document.querySelector("[data-news-form]");
+  if (newsForm) {
+    newsForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var done = document.createElement("p");
+      done.className = "footer__news-done";
+      done.setAttribute("role", "status");
+      done.textContent = "You're on the list.";
+      newsForm.replaceWith(done);
+    });
+  }
 })();

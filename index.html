@@ -224,7 +224,104 @@
       </div>
     </section>
 
+    <!-- =========================================================
+         ARCHIVE — past drops. Hover highlights a row. (REF 1)
+         ========================================================= -->
+    <section class="wrap archive" id="archive" aria-labelledby="archive-title">
+      <div class="archive__head">
+        <h2 class="archive__title" id="archive-title">Archive</h2>
+        <span class="archive__note">Gone for good</span>
+      </div>
+
+      <div class="archive__list">
+        <a class="archive__row" href="shop.html">
+          <span class="archive__idx">/ 00</span>
+          <h3 class="archive__name">Founding Set</h3>
+          <span class="archive__desc">Where it started. Ten pieces, one city.</span>
+        </a>
+        <a class="archive__row" href="shop.html">
+          <span class="archive__idx">/ N1</span>
+          <h3 class="archive__name">Night Series</h3>
+          <span class="archive__desc">Built for after dark. Sold out in a weekend.</span>
+        </a>
+        <a class="archive__row" href="shop.html">
+          <span class="archive__idx">/ S1</span>
+          <h3 class="archive__name">Static Capsule</h3>
+          <span class="archive__desc">Signal lost. No restock.</span>
+        </a>
+        <a class="archive__row" href="shop.html">
+          <span class="archive__idx">/ C1</span>
+          <h3 class="archive__name">Cold Storage</h3>
+          <span class="archive__desc">Deadstock only. When it's gone, it's gone.</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         BRAND STRIP — two short lines, street tone
+         ========================================================= -->
+    <section class="wrap brandstrip">
+      <p class="brandstrip__lead">Built in Bahrain. Worn everywhere.</p>
+      <p class="brandstrip__sub">
+        Own-brand streetwear out of the Gulf. Small runs, no restocks, priced for
+        the street. Move first — the rest catch up.
+      </p>
+    </section>
+
   </main>
+
+  <!-- ===========================================================
+       FOOTER — links, newsletter, giant wordmark, social
+       =========================================================== -->
+  <footer class="footer">
+    <div class="wrap footer__top">
+      <nav class="footer__nav" aria-label="Footer">
+        <div class="footer__col">
+          <span class="footer__col-title">Shop</span>
+          <a href="shop.html">Shop All</a>
+          <a href="index.html#new-drop">New Drop</a>
+          <a href="index.html#archive">Archive</a>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-title">Info</span>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+        </div>
+      </nav>
+
+      <div class="footer__news">
+        <span class="footer__col-title footer__news-title">Get the drop first</span>
+        <p class="footer__news-copy">Drop alerts straight to your inbox. No noise.</p>
+        <form class="news-form" data-news-form>
+          <label class="sr-only" for="news-email">Email address</label>
+          <input id="news-email" type="email" name="email" placeholder="Email address" required autocomplete="email" />
+          <button class="btn btn--primary" type="submit"><span>Join</span></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__wordmark" aria-hidden="true">BLVCK LABEL</div>
+
+    <div class="wrap footer__bar">
+      <p class="footer__copy">© 2026 BLVCK LABEL</p>
+      <div class="footer__social">
+        <a class="icon-btn" href="#" aria-label="BLVCK LABEL on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="0" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+        </a>
+        <a class="icon-btn" href="#" aria-label="BLVCK LABEL on TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M14 3v10.5a3 3 0 1 1-2.4-2.94V13a1 1 0 1 0 1 1V3h1.4a4 4 0 0 0 3.6 3.2v2a6 6 0 0 1-3.6-1.2Z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <script src="js/main.js"></script>
 </body>
