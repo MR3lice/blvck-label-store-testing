@@ -1127,3 +1127,201 @@ body.has-pdp-bar main { padding-bottom: 76px; }
   .pdp-bar { display: none; }
   body.has-pdp-bar main { padding-bottom: 0; }
 }
+
+/* =============================================================
+   MODULE 8 — CART DRAWER (fake state, JS-injected)
+   Slides in from the right. Line items with qty steppers,
+   subtotal, demo checkout. Empty state. Toast.
+   ============================================================= */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(10, 10, 10, 0.62);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t) var(--ease), visibility var(--t) var(--ease);
+}
+.cart-overlay.is-open { opacity: 1; visibility: visible; }
+
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 210;
+  width: min(420px, 92vw);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-left: var(--border-hair);
+  transform: translateX(100%);
+  transition: transform var(--t-slow) var(--ease);
+}
+.cart.is-open { transform: translateX(0); }
+
+.cart__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: var(--border-hair);
+}
+.cart__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.cart__count { color: var(--secondary); }
+
+.cart__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 20px;
+}
+.cart__foot {
+  padding: 18px 20px;
+  border-top: var(--border-hair);
+}
+.cart__subtotal {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.cart__subtotal-label {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--secondary);
+}
+.cart__subtotal-val {
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+.cart__checkout { width: 100%; }
+.cart__disclaimer {
+  margin-top: 10px;
+  text-align: center;
+  font-size: var(--fs-small);
+  color: var(--secondary);
+  letter-spacing: 0.04em;
+}
+
+/* Line item */
+.cart-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--muted);
+}
+.cart-item__thumb {
+  width: 60px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--placeholder);
+}
+.cart-item__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.cart-item__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.cart-item__name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.cart-item__remove {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  color: var(--secondary);
+  font-size: 18px;
+  line-height: 1;
+  transition: color var(--t) var(--ease);
+}
+.cart-item__remove:hover { color: var(--accent); }
+.cart-item__size {
+  color: var(--secondary);
+  font-size: var(--fs-small);
+  margin: 5px 0 12px;
+}
+.cart-item__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.qty {
+  display: flex;
+  align-items: center;
+  border: var(--border-hair);
+}
+.qty button {
+  width: 30px;
+  height: 30px;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1;
+  transition: color var(--t) var(--ease);
+}
+.qty button:hover { color: var(--accent); }
+.qty__val {
+  min-width: 30px;
+  text-align: center;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.cart-item__price {
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Empty state */
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 44px 0;
+}
+.cart-empty__msg {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 7vw, 40px);
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+body.cart-open { overflow: hidden; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 300;
+  max-width: min(90vw, 360px);
+  padding: 12px 18px;
+  background: var(--surface);
+  border: var(--border-hair);
+  border-left: 3px solid var(--accent);
+  color: var(--text);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 10px);
+  transition: opacity var(--t) var(--ease),
+              transform var(--t) var(--ease),
+              visibility var(--t) var(--ease);
+}
+.toast.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
