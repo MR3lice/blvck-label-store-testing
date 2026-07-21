@@ -53,6 +53,35 @@
   if (mq.addEventListener) mq.addEventListener("change", onChange);
   else if (mq.addListener) mq.addListener(onChange);
 
+  /* ---- Shop filters (show/hide by category) -------------- */
+  var filterBtns = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+  var shopGrid = document.querySelector("[data-shop-grid]");
+  if (filterBtns.length && shopGrid) {
+    var cards = Array.prototype.slice.call(shopGrid.querySelectorAll("[data-category]"));
+    var empty = shopGrid.querySelector("[data-shop-empty]");
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var filter = btn.getAttribute("data-filter");
+        var shown = 0;
+
+        filterBtns.forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", String(on));
+        });
+
+        cards.forEach(function (card) {
+          var show = filter === "all" || card.getAttribute("data-category") === filter;
+          card.classList.toggle("is-hidden", !show);
+          if (show) shown++;
+        });
+
+        if (empty) empty.classList.toggle("is-hidden", shown > 0);
+      });
+    });
+  }
+
   /* ---- Newsletter capture (demo — no backend) ------------ */
   var newsForm = document.querySelector("[data-news-form]");
   if (newsForm) {

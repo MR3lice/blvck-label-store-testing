@@ -866,3 +866,79 @@ body.nav-open { overflow: hidden; }
 @media (min-width: 768px) {
   .footer__top { grid-template-columns: 1.4fr 1fr; align-items: start; }
 }
+
+/* =============================================================
+   MODULE 6 — SHOP ALL PAGE
+   Huge title, sharp/dark filter bar (JS show/hide), uniform grid.
+   ============================================================= */
+.shop-head {
+  padding-block: clamp(36px, 6vw, 68px) clamp(20px, 3vw, 28px);
+}
+.shop-head__eyebrow { margin-bottom: 14px; }
+.shop-head__title {
+  font-size: clamp(56px, 13vw, 168px);
+  line-height: 0.82;
+  letter-spacing: -0.01em;
+}
+
+/* Filter bar — sharp chips, horizontal scroll on mobile */
+.shop-filters {
+  position: sticky;
+  top: 64px;                          /* under the sticky header */
+  z-index: 90;
+  background: var(--bg);
+  border-block: var(--border-hair);
+}
+.shop-filters__inner {
+  display: flex;
+  gap: 8px;
+  padding-block: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.shop-filters__inner::-webkit-scrollbar { display: none; }
+.filter-btn {
+  flex: none;
+  padding: 10px 16px;
+  border: var(--border-hair);
+  color: var(--secondary);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transition: color var(--t) var(--ease),
+              border-color var(--t) var(--ease),
+              background var(--t) var(--ease);
+}
+.filter-btn:hover {
+  color: var(--text);
+  border-color: var(--secondary);
+}
+.filter-btn.is-active {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+/* Uniform product grid */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding-block: clamp(24px, 4vw, 40px) clamp(56px, 9vw, 104px);
+}
+@media (min-width: 768px) {
+  .shop-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.shop-grid__empty {
+  grid-column: 1 / -1;
+  padding: 48px 0;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: var(--fs-small);
+}
+
+/* Filter show/hide */
+.is-hidden { display: none !important; }
