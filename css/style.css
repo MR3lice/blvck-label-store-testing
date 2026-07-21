@@ -546,3 +546,120 @@ body.nav-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .hero__content > * { animation: none; }
 }
+
+/* Anchored sections clear the sticky header when jumped to */
+[id] { scroll-margin-top: 84px; }
+
+/* =============================================================
+   MODULE 4 — NEW DROP GRID
+   Editorial product grid. First card is large (2x2 on desktop),
+   the rest are standard cards. Placeholder <img> per card swaps
+   to a real photo by src. Green NEW tag on select items.
+   ============================================================= */
+.drop {
+  padding-block: clamp(56px, 9vw, 104px);
+}
+.drop__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+.drop__title { font-size: var(--fs-h2); }
+.drop__link {
+  flex: none;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--secondary);
+  transition: color var(--t) var(--ease);
+}
+.drop__link:hover { color: var(--accent); }
+
+.drop__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+/* ---- Product card ---------------------------------------- */
+.p-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  color: var(--text);
+}
+.p-card__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--placeholder);
+}
+.p-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--t-slow) var(--ease);
+}
+.p-card:hover .p-card__img { transform: scale(1.04); }
+
+/* Green NEW tag */
+.p-card__tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 5px 10px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.p-card__info {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 14px 18px;
+}
+.p-card__name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  transition: color var(--t) var(--ease);
+}
+.p-card:hover .p-card__name { color: var(--accent); }
+.p-card__price {
+  flex: none;
+  font-size: var(--fs-small);
+  color: var(--secondary);
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Large featured card — full width on mobile */
+.p-card--lg { grid-column: 1 / -1; }
+.p-card--lg .p-card__name { font-size: clamp(30px, 7vw, 44px); }
+
+@media (min-width: 768px) {
+  .drop__grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+  }
+  .p-card--lg {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  /* large card fills its 2x2 cell; media grows to fill */
+  .p-card--lg .p-card__media {
+    aspect-ratio: auto;
+    flex: 1 1 auto;
+  }
+}
