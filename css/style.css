@@ -252,6 +252,7 @@ strong { font-weight: 700; }
    Two identical groups translate -50% for a seamless loop.
    ------------------------------------------------------------- */
 .ticker {
+  position: relative;               /* contains the sr-only span so it can't widen the page */
   background: var(--accent);
   color: var(--accent-ink);
   overflow: hidden;
@@ -580,7 +581,7 @@ body.nav-open { overflow: hidden; }
 
 .drop__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -622,9 +623,9 @@ body.nav-open { overflow: hidden; }
 
 .p-card__info {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;      /* stack name over price — no horizontal blowout */
+  align-items: flex-start;
+  gap: 6px;
   padding: 14px 14px 18px;
 }
 .p-card__name {
@@ -650,7 +651,7 @@ body.nav-open { overflow: hidden; }
 
 @media (min-width: 768px) {
   .drop__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-auto-rows: 1fr;
   }
   .p-card--lg {
@@ -820,7 +821,7 @@ body.nav-open { overflow: hidden; }
   padding: 12px 14px;
   background: transparent;
   color: var(--text);
-  font-size: 14px;
+  font-size: 16px;                  /* >=16px stops iOS zoom-on-focus */
 }
 .news-form input::placeholder { color: var(--secondary); }
 .news-form .btn { flex: none; }
@@ -899,6 +900,9 @@ body.nav-open { overflow: hidden; }
 .shop-filters__inner::-webkit-scrollbar { display: none; }
 .filter-btn {
   flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;                 /* tap target */
   padding: 10px 16px;
   border: var(--border-hair);
   color: var(--secondary);
@@ -924,12 +928,12 @@ body.nav-open { overflow: hidden; }
 /* Uniform product grid */
 .shop-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
   padding-block: clamp(24px, 4vw, 40px) clamp(56px, 9vw, 104px);
 }
 @media (min-width: 768px) {
-  .shop-grid { grid-template-columns: repeat(4, 1fr); }
+  .shop-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 .shop-grid__empty {
   grid-column: 1 / -1;
@@ -1094,11 +1098,11 @@ body.nav-open { overflow: hidden; }
 .also__title { font-size: var(--fs-h3); margin-bottom: 24px; }
 .also__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 @media (min-width: 768px) {
-  .also__grid { grid-template-columns: repeat(4, 1fr); }
+  .also__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 /* Sticky mobile add-to-cart bar */
@@ -1263,8 +1267,8 @@ body.has-pdp-bar main { padding-bottom: 76px; }
   border: var(--border-hair);
 }
 .qty button {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   color: var(--text);
   font-size: 16px;
   line-height: 1;
@@ -1272,7 +1276,7 @@ body.has-pdp-bar main { padding-bottom: 76px; }
 }
 .qty button:hover { color: var(--accent); }
 .qty__val {
-  min-width: 30px;
+  min-width: 34px;
   text-align: center;
   font-size: 14px;
   font-variant-numeric: tabular-nums;
@@ -1399,7 +1403,7 @@ body.cart-open { overflow: hidden; }
   background: var(--surface);
   color: var(--text);
   padding: 12px 14px;
-  font-size: 15px;
+  font-size: 16px;                  /* >=16px stops iOS zoom-on-focus */
   transition: border-color var(--t) var(--ease);
 }
 .field input:focus,
