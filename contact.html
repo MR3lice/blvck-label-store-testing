@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLVCK LABEL — Contact</title>
+  <meta name="description" content="Contact BLVCK LABEL — questions, orders, wholesale." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- TICKER -->
+  <div class="ticker" role="presentation">
+    <div class="ticker__track" aria-hidden="true">
+      <div class="ticker__group">
+        <span class="ticker__item">Worldwide Shipping</span>
+        <span class="ticker__item">Limited Run</span>
+        <span class="ticker__item">Drop / 01 Live</span>
+        <span class="ticker__item">Move First</span>
+        <span class="ticker__item">When It's Gone It's Gone</span>
+      </div>
+      <div class="ticker__group">
+        <span class="ticker__item">Worldwide Shipping</span>
+        <span class="ticker__item">Limited Run</span>
+        <span class="ticker__item">Drop / 01 Live</span>
+        <span class="ticker__item">Move First</span>
+        <span class="ticker__item">When It's Gone It's Gone</span>
+      </div>
+    </div>
+    <span class="sr-only">Worldwide shipping. Limited run. Drop 01 live. Move first.</span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="wrap header__inner">
+      <a class="header__logo" href="index.html" aria-label="BLVCK LABEL home">BLVCK LABEL</a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="shop.html">Shop All</a>
+        <a class="nav__link" href="index.html#new-drop">New Drop</a>
+        <a class="nav__link" href="index.html#archive">Archive</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="icon-btn cart-btn" href="#" aria-label="Cart, 0 items">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M4 7h16l-1.2 12.2a1 1 0 0 1-1 .8H6.2a1 1 0 0 1-1-.8L4 7Z" />
+            <path d="M8.5 7V6a3.5 3.5 0 0 1 7 0v1" />
+          </svg>
+          <span class="cart-badge" data-cart-count>0</span>
+        </a>
+        <button class="icon-btn hamburger" type="button"
+                data-nav-open aria-expanded="false" aria-controls="nav-overlay" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <nav class="nav-overlay" id="nav-overlay" data-nav-overlay aria-label="Mobile">
+    <div class="nav-overlay__top">
+      <span class="nav-overlay__brand">BLVCK LABEL</span>
+      <button class="icon-btn" type="button" data-nav-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-overlay__list">
+      <li><a class="nav-overlay__link" href="shop.html">Shop All</a></li>
+      <li><a class="nav-overlay__link" href="index.html#new-drop">New Drop</a></li>
+      <li><a class="nav-overlay__link" href="index.html#archive">Archive</a></li>
+    </ul>
+    <div class="nav-overlay__secondary">
+      <a href="about.html">About</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="wrap contact">
+      <div class="contact__main">
+        <p class="eyebrow eyebrow--accent">Contact</p>
+        <h1 class="contact__title">Say<br>Something.</h1>
+        <p class="contact__lead">
+          Questions, orders, wholesale, or just want to say what's up — drop us a line.
+          We read everything.
+        </p>
+
+        <form class="contact-form" data-contact-form novalidate>
+          <div class="field">
+            <label for="c-name">Name</label>
+            <input id="c-name" name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input id="c-email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" required></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit"><span>Send It</span></button>
+          <p class="pdp__note" data-contact-note role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <aside class="contact__aside">
+        <dl>
+          <dt>Email</dt>
+          <dd><a href="mailto:hello@blvcklabel.co">hello@blvcklabel.co</a></dd>
+          <dt>Based</dt>
+          <dd>Manama, Bahrain</dd>
+          <dt>Social</dt>
+          <dd>
+            <div class="contact__socials footer__social">
+              <a class="icon-btn" href="#" aria-label="BLVCK LABEL on Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="0" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a class="icon-btn" href="#" aria-label="BLVCK LABEL on TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M14 3v10.5a3 3 0 1 1-2.4-2.94V13a1 1 0 1 0 1 1V3h1.4a4 4 0 0 0 3.6 3.2v2a6 6 0 0 1-3.6-1.2Z" />
+                </svg>
+              </a>
+            </div>
+          </dd>
+        </dl>
+      </aside>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer__top">
+      <nav class="footer__nav" aria-label="Footer">
+        <div class="footer__col">
+          <span class="footer__col-title">Shop</span>
+          <a href="shop.html">Shop All</a>
+          <a href="index.html#new-drop">New Drop</a>
+          <a href="index.html#archive">Archive</a>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-title">Info</span>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+        </div>
+      </nav>
+
+      <div class="footer__news">
+        <span class="footer__col-title footer__news-title">Get the drop first</span>
+        <p class="footer__news-copy">Drop alerts straight to your inbox. No noise.</p>
+        <form class="news-form" data-news-form>
+          <label class="sr-only" for="news-email">Email address</label>
+          <input id="news-email" type="email" name="email" placeholder="Email address" required autocomplete="email" />
+          <button class="btn btn--primary" type="submit"><span>Join</span></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__wordmark" aria-hidden="true">BLVCK LABEL</div>
+
+    <div class="wrap footer__bar">
+      <p class="footer__copy">© 2026 BLVCK LABEL</p>
+      <div class="footer__social">
+        <a class="icon-btn" href="#" aria-label="BLVCK LABEL on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="0" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+        </a>
+        <a class="icon-btn" href="#" aria-label="BLVCK LABEL on TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M14 3v10.5a3 3 0 1 1-2.4-2.94V13a1 1 0 1 0 1 1V3h1.4a4 4 0 0 0 3.6 3.2v2a6 6 0 0 1-3.6-1.2Z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

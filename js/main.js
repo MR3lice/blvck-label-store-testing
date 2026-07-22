@@ -403,6 +403,30 @@
     }
   }
 
+  /* ---- Contact form (demo — no backend) ------------------ */
+  var contactForm = document.querySelector("[data-contact-form]");
+  if (contactForm) {
+    var contactNote = contactForm.querySelector("[data-contact-note]");
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // native-style validation without blocking the demo
+      var missing = Array.prototype.slice.call(
+        contactForm.querySelectorAll("[required]")
+      ).filter(function (f) { return !f.value.trim(); });
+      if (missing.length) {
+        contactNote.textContent = "Fill in every field first.";
+        contactNote.setAttribute("data-state", "error");
+        missing[0].focus();
+        return;
+      }
+      var done = document.createElement("p");
+      done.className = "contact__done";
+      done.setAttribute("role", "status");
+      done.textContent = "Message sent. We'll hit you back.";
+      contactForm.replaceWith(done);
+    });
+  }
+
   /* ---- Newsletter capture (demo — no backend) ------------ */
   var newsForm = document.querySelector("[data-news-form]");
   if (newsForm) {
